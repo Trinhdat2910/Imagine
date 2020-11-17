@@ -308,7 +308,7 @@ final class Drawer implements DrawerInterface
     /**
      * {@inheritdoc}
      */
-    public function text($string, AbstractFont $font, PointInterface $position, $angle = 0, $width = null)
+    public function text($string, AbstractFont $font, PointInterface $position, $angle = 0, $width = null, $textAlign = null)
     {
         try {
             $pixel = $this->getColor($font->getColor());
@@ -325,6 +325,14 @@ final class Drawer implements DrawerInterface
                 $text->setFontSize($font->getSize());
             } else {
                 $text->setFontSize((int) ($font->getSize() * (96 / 72)));
+            }
+            // text align
+            if ($textAlign == 'right') {
+                $text->setTextAlignment(\Imagick::ALIGN_RIGHT);
+            } else if($textAlign == 'center') {
+                $text->setTextAlignment(\Imagick::ALIGN_CENTER);
+            } else {
+                $text->setTextAlignment(\Imagick::ALIGN_LEFT);
             }
             $text->setFillColor($pixel);
             $text->setTextAntialias(true);

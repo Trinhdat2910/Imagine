@@ -140,10 +140,11 @@ interface DrawerInterface
      * @param PointInterface $position
      * @param integer        $angle
      * @param integer        $width
+     * @param string         $textAlign
      *
      * @throws RuntimeException
      *
      * @return DrawerInterface
      */
-    public function text($string, AbstractFont $font, PointInterface $position, $angle = 0, $width = null);
+    public function text($string, AbstractFont $font, PointInterface $position, $angle = 0, $width = null, $textAlign = null);
 }
